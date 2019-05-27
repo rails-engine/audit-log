@@ -22,18 +22,19 @@ Use in controllers:
 ```rb
 class TicktsController < ApplicationController
   def index
-    audit! :tickets, user: current_user
+    audit! :tickets, nil
   end
 
   def update
-    audit! :update_ticket, payload: ticket_params
+    audit! :update_ticket, @ticket, payload: ticket_params
   end
 
   def destroy
-    audit! :delete_ticket, user: current_user
+    audit! :delete_ticket
   end
 
   private
+
     def ticket_params
       params.required(:ticket).permit!(:title, :description, :status)
     end
@@ -43,9 +44,9 @@ end
 In models or other places:
 
 ```rb
-AuditLog.audit(:update_password, payload: { ip: request.ip })
-AuditLog.audit(:sign_in, payload: { ip: request.ip })
-AuditLog.audit(:create_address, payload: params)
+AuditLog.audit!(:update_password, @user, payload: { ip: request.ip })
+AuditLog.audit!(:sign_in, @user, payload: { ip: request.ip })
+AuditLog.audit!(:create_address, nil, payload: params)
 ```
 
 ## License
