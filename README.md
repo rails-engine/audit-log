@@ -15,6 +15,12 @@ And then execute:
 $ bundle
 ```
 
+Generate files:
+
+```bash
+$ rails g audit_log:install
+```
+
 ## Usage
 
 Use in controllers:
