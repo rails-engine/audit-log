@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Audit Log</title>
+  <%= stylesheet_link_tag "audit-log/application", media: "all" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div class="container">
+  <% if notice %>
+  <div id="notice"><%= notice %></div>
+  <% end %>
+
+  <%= yield %>
+</div>
+
+<div class="footer">
+  <a href="https://github.com/rails-engine/audit-log">AuditLog</a> powered.
+</div>
+
+</body>
+</html>

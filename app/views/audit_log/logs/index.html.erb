@@ -1,0 +1,27 @@
+<% if @logs.blank? %>
+  <div class="no-record">No exceptions.</div>
+<% else %>
+  <%= paginate @logs %>
+
+  <table class="table table-borded">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Summary</th>
+        <th class="date"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @logs.each do |log| %>
+        <tr>
+          <td><%= log.id %></td>
+          <td><%= link_to log.title, log %></td>
+          <td class="date"><%= log.created_at.to_s %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= paginate @logs %>
+<% end %>
