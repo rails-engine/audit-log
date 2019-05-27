@@ -55,6 +55,16 @@ AuditLog.audit!(:sign_in, @user, payload: { ip: request.ip })
 AuditLog.audit!(:create_address, nil, payload: params)
 ```
 
+Change `config/routes.rb` to add Route:
+
+```rb
+Rails.application.routes.draw do
+  authenticate :user, -> (u) { u.admin? } do
+    mount AuditLog::Engine => '/audit-log'
+  end
+end
+```
+
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
