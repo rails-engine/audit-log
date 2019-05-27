@@ -1,0 +1,21 @@
+language: ruby
+env:
+  - USE_OFFICIAL_GEM_SOURCE=1
+
+services:
+  - mysql
+
+rvm:
+  - 2.3.0
+  - 2.4.0
+gemfile:
+  - gemfiles/Gemfile-5-0
+  - gemfiles/Gemfile-5-1
+  - gemfiles/Gemfile-5-2
+
+before_script:
+  - bundle install
+  - RAILS_ENV=test bundle exec rake db:create
+  - RAILS_ENV=test bundle exec rake db:migrate
+
+script: RAILS_ENV=test bundle exec rails test
