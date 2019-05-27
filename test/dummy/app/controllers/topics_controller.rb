@@ -5,14 +5,17 @@ class TopicsController < ApplicationController
   # GET /topics
   def index
     @topics = Topic.all
+    audit! :list_topic
   end
 
   # GET /topics/1
-  def show; end
+  def show
+  end
 
   # GET /topics/new
   def new
     @topic = Topic.new
+    audit! :new_topic
   end
 
   # GET /topics/1/edit

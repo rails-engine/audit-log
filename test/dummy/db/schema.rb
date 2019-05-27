@@ -13,10 +13,10 @@
 ActiveRecord::Schema.define(version: 2019_05_27_035005) do
 
   create_table "audit_logs", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "user_id", null: false
     t.string "action", null: false
-    t.integer "record_id", null: false
-    t.string "record_type", null: false
+    t.integer "user_id"
+    t.integer "record_id"
+    t.string "record_type"
     t.text "payload"
     t.text "request"
     t.datetime "created_at"

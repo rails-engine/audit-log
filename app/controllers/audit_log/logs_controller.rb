@@ -6,7 +6,13 @@ module AuditLog
     before_action :set_log, only: %i[show destroy]
 
     def index
-      @logs = Log.order("id desc").page(params[:page]).per(15)
+      @logs = Log.order("id desc").includes(:user)
+
+      if params[:q]
+        @logs = @logs.where("action like ?", "%#{params[:q]}%")
+      end
+
+      @logs = @logs.page(params[:page]).per(15)
     end
 
     def show; end

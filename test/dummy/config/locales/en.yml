@@ -21,3 +21,7 @@
 
 en:
   hello: "Hello world"
+  audit_log:
+    action:
+      hello: "Hello1"
+      home: "Visit Home"

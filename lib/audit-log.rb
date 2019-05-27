@@ -1,6 +1,8 @@
 require_relative "./audit-log/version"
 require_relative "./audit-log/configuration"
+require_relative "./audit-log/model"
 require_relative "./audit-log/engine"
+require "kaminari"
 
 module AuditLog
   class << self
@@ -9,6 +11,7 @@ module AuditLog
       @config = Configuration.new
       @config.user_class = "User"
       @config.current_user_method = "current_user"
+      @config.user_name_method = "name"
       @config
     end
 
@@ -16,8 +19,10 @@ module AuditLog
       config.instance_exec(&block)
     end
 
-    # Create audit log
-    def audit!(action, payload: nil, user: nil, request: nil)
+    # Create an audit log
+    #
+    # AuditLog.audit!(:edit_account, @account, payload: account_params, user: current_user)
+    def audit!(action, record = nil, payload: nil, user: nil, request: nil)
       request_info = {}
       if request
         request_info = {
@@ -29,9 +34,10 @@ module AuditLog
 
       AuditLog::Log.create!(
         action: action,
-        payload: payload || {},
+        record: record,
+        payload: (payload || {}).to_h.deep_stringify_keys,
         user: user,
-        request: request_info
+        request: request_info.deep_stringify_keys
       )
     end
   end

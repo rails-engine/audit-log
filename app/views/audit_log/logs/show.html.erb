@@ -2,8 +2,40 @@
   <%= link_to 'Back', logs_path, class: 'btn' %>
 </div>
 
-<h1><%= @log.title %></h1>
+<div class="audit-log-detail">
+<h1><%= @log.action_name %></h1>
 
-<pre class="audit-log"><%= @log.body %></pre>
+<div class="detail-group">
+  <label class="control-label">User:</label>
+  <%= @log.user_name %>
+</div>
+
+<div class="detail-group">
+  <label class="control-label">Time:</label>
+  <%= @log.created_at %>
+</div>
+
+<div class="detail-group">
+  <label class="control-label">URL:</label>
+  <%= @log.request["url"] %>
+</div>
+
+<div class="detail-group">
+  <label class="control-label">IP Address:</label>
+  <%= @log.request["ip"] %>
+</div>
+
+<div class="detail-group">
+  <label class="control-label">User Agent:</label>
+  <%= @log.request["user_agent"] %>
+</div>
+
+<h4>Payload<h4>
+<pre class="payload"><%= JSON.pretty_generate(@log.payload) %></pre>
+
+<% if @log.record %>
+<h4>Record<h4>
+<pre class="payload"><%= JSON.pretty_generate(@log.record.as_json) %></pre>
+<% end %>
 
 

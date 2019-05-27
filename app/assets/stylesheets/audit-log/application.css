@@ -119,6 +119,14 @@ hr {
   background: #FCEDEC;
 }
 
+.form-control {
+  font-size: 14px;
+  line-height: 1.42857143;
+  border: 1px solid #ccc;
+  padding: 6px 16px;
+  outline: 0 !important;
+  border-radius: 3px;
+}
 .container {
   max-width: 1000px;
   margin-left: auto;
@@ -153,7 +161,7 @@ hr {
 
 pre {
   background: #f7f7f7;
-  padding: 25px;
+  padding: 8px;
   border-radius: 3px;
   font-size: 12px;
   font-family: Menlo, Monaco, Consolas, monospace;
@@ -185,4 +193,13 @@ h1 { font-size: 16px; }
   border: 1px solid #f0f0f0;
   background: #f0f0f0;
   font-style: normal;
+}
+
+.detail-group {
+  margin-bottom: 8px;
+}
+.detail-group .control-label {
+  width: 120px;
+  color: #777;
+  display: inline-block;
 }

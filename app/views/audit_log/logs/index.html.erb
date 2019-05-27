@@ -1,5 +1,13 @@
+<div class="toolbar">
+  <form class="form-inline" action="<%= audit_log.logs_path %>" method="GET">
+    <div class="form-group">
+      <input name="q" type="text" class="form-control" placeholder="Search action" value="<%= params[:q] %>" />
+      <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+  </form>
+</div>
 <% if @logs.blank? %>
-  <div class="no-record">No exceptions.</div>
+  <div class="no-record">No audit logs.</div>
 <% else %>
   <%= paginate @logs %>
 
@@ -7,8 +15,10 @@
     <thead>
       <tr>
         <th>#</th>
-        <th>Summary</th>
+        <th>User</th>
+        <th>Action</th>
         <th class="date"></th>
+        <th></th>
       </tr>
     </thead>
 
@@ -16,8 +26,12 @@
       <% @logs.each do |log| %>
         <tr>
           <td><%= log.id %></td>
-          <td><%= link_to log.title, log %></td>
+          <td><%= log.user_name %></td>
+          <td><%= log.action_name %></td>
           <td class="date"><%= log.created_at.to_s %></td>
+          <td>
+            <%= link_to "View", audit_log.log_path(log.id) %>
+          </td>
         </tr>
       <% end %>
     </tbody>

@@ -5,18 +5,24 @@ class CommentsController < ApplicationController
   # GET /comments
   def index
     @comments = Comment.all
+    audit! :list_comment
   end
 
   # GET /comments/1
-  def show; end
+  def show
+    audit! :show_comment, @comment
+  end
 
   # GET /comments/new
   def new
+    audit! :new_comment
     @comment = Comment.new
   end
 
   # GET /comments/1/edit
-  def edit; end
+  def edit
+    audit! :edit_comment, @comment
+  end
 
   # POST /comments
   def create
@@ -24,6 +30,7 @@ class CommentsController < ApplicationController
     @comment.user = current_user
 
     if @comment.save
+      audit! :create_comment, @comment, payload: comment_params
       redirect_to @comment, notice: 'Comment was successfully created.'
     else
       render :new
@@ -33,6 +40,7 @@ class CommentsController < ApplicationController
   # PATCH/PUT /comments/1
   def update
     if @comment.update(comment_params)
+      audit! :update_comment, @comment, payload: comment_params
       redirect_to @comment, notice: 'Comment was successfully updated.'
     else
       render :edit
@@ -42,6 +50,7 @@ class CommentsController < ApplicationController
   # DELETE /comments/1
   def destroy
     @comment.destroy
+    audit! :delete_comment, @comment, payload: @comment.attributes
     redirect_to comments_url, notice: 'Comment was successfully destroyed.'
   end
 
