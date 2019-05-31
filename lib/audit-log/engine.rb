@@ -1,4 +1,4 @@
-require_relative "./controller_helper"
+require_relative './controller_helper'
 
 module AuditLog
   class Engine < Rails::Engine

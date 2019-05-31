@@ -5,12 +5,12 @@ class NavigationTest < ActionDispatch::IntegrationTest
     @current_user = create(:user)
   end
 
-  test "GET /audit-log" do
-    get "/"
+  test 'GET /audit-log' do
+    get '/'
     assert_equal 200, response.status
 
     sign_in @current_user
-    get "/comments/new"
+    get '/comments/new'
     assert_equal 200, response.status
 
     comment = create(:comment)
@@ -21,11 +21,11 @@ class NavigationTest < ActionDispatch::IntegrationTest
 
     logs_count = AuditLog::Log.count
 
-    get "/audit-log"
+    get '/audit-log'
     assert_equal 200, response.status
-    assert_select "tbody tr", count: logs_count
+    assert_select 'tbody tr', count: logs_count
 
-    get "/audit-log?q=comment"
-    assert_select "tbody tr", count: 2
+    get '/audit-log?q=comment'
+    assert_select 'tbody tr', count: 2
   end
 end

@@ -1,1 +1,1 @@
-gem "devise"
+gem 'devise'

@@ -2,12 +2,25 @@
 
 Trail audit logs (Operation logs) into the database for user behaviors, including a web UI to query logs.
 
+[![Build Status](https://travis-ci.org/rails-engine/audit-log.svg?branch=master)](https://travis-ci.org/rails-engine/audit-log)
+
+## Demo UI
+
+Audit log list:
+
+<img width="870" src="https://user-images.githubusercontent.com/5518/58676735-e9570d80-838b-11e9-8ac0-6c5145b7fbb0.png">
+
+Detail page:
+
+<img width="870" src="https://user-images.githubusercontent.com/5518/58676737-e9570d80-838b-11e9-9292-63389b2d54cb.png">
+
+
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'audit-log'
+gem "audit-log"
 ```
 
 And then execute:
@@ -28,15 +41,34 @@ Use in controllers:
 ```rb
 class TicktsController < ApplicationController
   def index
-    audit! :tickets, nil
+    audit! :list_ticket, nil
+  end
+
+  def create
+    if @ticket.save
+      audit! :create_ticket, @ticket, payload: ticket_params
+    else
+      render :new
+    end
   end
 
   def update
-    audit! :update_ticket, @ticket, payload: ticket_params
+    if @ticket.save
+      audit! :update_ticket, @ticket, payload: ticket_params
+    else
+      render :edit
+    end
+  end
+
+  def approve
+    if @ticket.approve
+      audit! :approve_ticket, @ticket, payload: ticket_params
+    end
   end
 
   def destroy
-    audit! :delete_ticket
+    # store original attributes for destroy for keep values
+    audit! :delete_ticket, nil, @ticket.attributes
   end
 
   private
@@ -60,9 +92,25 @@ Change `config/routes.rb` to add Route:
 ```rb
 Rails.application.routes.draw do
   authenticate :user, -> (u) { u.admin? } do
-    mount AuditLog::Engine => '/audit-log'
+    mount AuditLog::Engine => "/audit-log"
   end
 end
+```
+
+I18n for audit names, you need create a `config/locales/audit_log.zh-CN.yml`:
+
+```yml
+zh-CN:
+  audit_log:
+    action:
+      sign_in: 登录
+      update_password: 修改密码
+      create_address: 添加住址
+      list_ticket: 查看工单列表
+      create_ticket: 创建工单
+      update_ticket: 更新工单
+      delete_ticket: 删除工单
+      approve_ticket: 审批工单
 ```
 
 ## License

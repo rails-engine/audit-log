@@ -9,8 +9,7 @@ class TopicsController < ApplicationController
   end
 
   # GET /topics/1
-  def show
-  end
+  def show; end
 
   # GET /topics/new
   def new

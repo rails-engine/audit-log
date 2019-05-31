@@ -1,17 +1,18 @@
-require_relative "./audit-log/version"
-require_relative "./audit-log/configuration"
-require_relative "./audit-log/model"
-require_relative "./audit-log/engine"
-require "kaminari"
+require_relative './audit-log/version'
+require_relative './audit-log/configuration'
+require_relative './audit-log/model'
+require_relative './audit-log/engine'
+require 'kaminari'
 
 module AuditLog
   class << self
     def config
       return @config if defined?(@config)
+
       @config = Configuration.new
-      @config.user_class = "User"
-      @config.current_user_method = "current_user"
-      @config.user_name_method = "name"
+      @config.user_class = 'User'
+      @config.current_user_method = 'current_user'
+      @config.user_name_method = 'name'
       @config
     end
 
@@ -28,7 +29,7 @@ module AuditLog
         request_info = {
           ip: request.ip,
           url: request.url,
-          user_agent: request.user_agent,
+          user_agent: request.user_agent
         }
       end
 

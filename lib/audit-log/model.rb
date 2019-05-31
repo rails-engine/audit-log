@@ -3,7 +3,7 @@ module AuditLog
     extend ActiveSupport::Concern
 
     included do
-      self.table_name = "audit_logs"
+      self.table_name = 'audit_logs'
 
       serialize :payload, JSON
       serialize :request, JSON
@@ -22,7 +22,7 @@ module AuditLog
     end
 
     def user_name
-      return "none" if self.user.blank?
+      return 'none' if self.user.blank?
 
       self.user.send(AuditLog.config.user_name_method)
     end
