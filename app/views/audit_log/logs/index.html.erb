@@ -1,7 +1,14 @@
 <div class="toolbar">
   <form class="form-inline" action="<%= audit_log.logs_path %>" method="GET">
     <div class="form-group">
+      <%= select_tag(:action_type, options_for_select(AuditLog.action_options, params[:action_type]), include_blank: "All actions", class: "form-control") %>
+    </div>
+
+    <div class="form-group">
       <input name="q" type="text" class="form-control" placeholder="Search action" value="<%= params[:q] %>" />
+    </div>
+
+    <div class="form-group">
       <button type="submit" class="btn btn-primary">Search</button>
     </div>
   </form>

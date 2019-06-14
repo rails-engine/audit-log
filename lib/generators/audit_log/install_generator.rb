@@ -9,6 +9,7 @@ module AuditLog
 
       def add_initializer
         template 'config/initializers/audit-log.rb', 'config/initializers/audit-log.rb'
+        template 'config/locales/audit-log.yml', 'config/locales/audit-log.yml'
       end
 
       def add_migrations

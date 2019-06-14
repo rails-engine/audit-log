@@ -61,4 +61,8 @@ class AuditLogTest < ActiveSupport::TestCase
     assert_equal '123', log.payload['a']
     assert_equal '456', log.payload['b']
   end
+
+  test "action_options" do
+    assert_equal [["List Audit Log", "list_audit_log"], ["Create Audit Log", "create_audit_log"], ["Update Audit Log", "update_audit_log"], ["Update Password", "update_password"], ["Hello1", "hello"], ["Visit Home", "home"]], AuditLog.action_options
+  end
 end

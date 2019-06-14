@@ -33,6 +33,9 @@ module AuditLog
         }
       end
 
+      # Set nil if record is a new_record, do this for avoid create record.
+      record = nil if record&.new_record?
+
       AuditLog::Log.create!(
         action: action,
         record: record,
@@ -40,6 +43,11 @@ module AuditLog
         user: user,
         request: request_info.deep_stringify_keys
       )
+    end
+
+    # Get I18n action name options for select
+    def action_options(locale: I18n.default_locale)
+      I18n.backend.send(:translations)[locale][:audit_log][:action].map { |k, v| [v, k.to_s] }
     end
   end
 end

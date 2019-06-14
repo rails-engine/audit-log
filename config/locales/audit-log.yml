@@ -1,0 +1,7 @@
+en:
+  audit_log:
+    action:
+      list_audit_log: List Audit Log
+      create_audit_log: Create Audit Log
+      update_audit_log: Update Audit Log
+      update_password: Update Password

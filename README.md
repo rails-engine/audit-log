@@ -97,7 +97,7 @@ Rails.application.routes.draw do
 end
 ```
 
-I18n for audit names, you need create a `config/locales/audit_log.zh-CN.yml`:
+I18n for audit names, you need create a `config/locales/audit-log.zh-CN.yml`:
 
 ```yml
 zh-CN:
