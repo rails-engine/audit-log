@@ -46,8 +46,8 @@ module AuditLog
     end
 
     # Get I18n action name options for select
-    def action_options(locale: I18n.locale)
-      I18n.backend.send(:translations)[locale][:audit_log][:action].map { |k, v| [v, k.to_s] }
+    def action_options
+      I18n.t("audit_log.action").map { |k, v| [v, k.to_s] }
     end
   end
 end
