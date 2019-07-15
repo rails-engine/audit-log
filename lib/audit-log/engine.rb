@@ -7,4 +7,5 @@ module AuditLog
     ActiveSupport.on_load(:action_controller) do
       prepend AuditLog::ControllerHelper
     end
+  end
 end
