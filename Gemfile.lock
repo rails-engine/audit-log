@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    audit-log (0.2.0)
+    audit-log (0.2.1)
       kaminari (>= 0.15)
       rails (>= 4.0)
 

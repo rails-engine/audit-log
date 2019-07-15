@@ -113,6 +113,25 @@ zh-CN:
       approve_ticket: 审批工单
 ```
 
+For track Warden (Devise) sign in behavirs:
+
+config/initializes/devise.rb
+
+```rb
+Warden::Manager.after_authentication do |user, auth, opts|
+  request = ActionDispatch::Request.new(auth.env)
+  AuditLog.audit!(:sign_in, user, payload: opts, user: user, request: request)
+end
+
+Warden::Manager.before_failure do |env, opts|
+  request = ActionDispatch::Request.new(env)
+  email = request.params.dig(:user, :email)
+  user = User.find_by_email(email)
+  opts[:email] = email
+  AuditLog.audit!(:sign_in_failure, nil, payload: opts, request: request, user: user)
+end
+```
+
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
