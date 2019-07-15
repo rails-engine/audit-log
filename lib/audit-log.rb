@@ -27,7 +27,8 @@ module AuditLog
       request_info = {}
       if request
         request_info = {
-          ip: request.ip,
+          request_id: request.request_id,
+          ip: request.remote_ip,
           url: request.url,
           user_agent: request.user_agent
         }

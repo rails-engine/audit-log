@@ -11,7 +11,7 @@ class AuditLogTest < ActiveSupport::TestCase
   test 'audit!' do
     user = create(:user)
     record = create(:comment)
-    request = Rack::Request.new(Rack::MockRequest.env_for('http://example.com:8080/test',
+    request = ActionDispatch::Request.new(Rack::MockRequest.env_for('http://example.com:8080/test',
                                                           'REMOTE_ADDR' => '10.10.10.10',
                                                           'HTTP_USER_AGENT' => 'Fake agent'))
     log = AuditLog.audit!(:hello, record, payload: { name: 'Foo', status: 1 }, request: request, user: user)

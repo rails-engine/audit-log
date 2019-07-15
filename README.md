@@ -82,8 +82,8 @@ end
 In models or other places:
 
 ```rb
-AuditLog.audit!(:update_password, @user, payload: { ip: request.ip })
-AuditLog.audit!(:sign_in, @user, payload: { ip: request.ip })
+AuditLog.audit!(:update_password, @user, payload: { ip: request.remote_ip })
+AuditLog.audit!(:sign_in, @user, payload: { ip: request.remote_ip })
 AuditLog.audit!(:create_address, nil, payload: params)
 ```
 
