@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative './controller_helper'
 
 module AuditLog
@@ -8,8 +10,10 @@ module AuditLog
       prepend AuditLog::ControllerHelper
     end
 
-    initializer "audit-log.assets.precompile", group: :all do |app|
-      app.config.assets.precompile += %w( audit-log/application.css )
+    AuditLog::LogSubscriber.attach_to :audit_log
+
+    initializer 'audit-log.assets.precompile', group: :all do |app|
+      app.config.assets.precompile += %w[audit-log/application.css]
     end
   end
 end
