@@ -6,6 +6,8 @@ Trail audit logs (Operation logs) into the database for user behaviors, includin
 
 > We used audit-log in our production environment more than 1 year, until now (2020.5.21), it's inserted about **20 million** log in our system.
 
+[中文介绍与使用说明](https://ruby-china.org/topics/39890)
+
 ## Demo UI
 
 Audit log list:
