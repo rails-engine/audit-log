@@ -1,8 +1,10 @@
 # AuditLog
 
-Trail audit logs (Operation logs) into the database for user behaviors, including a web UI to query logs.
+Trail audit logs (Operation logs) into the database for user behaviors, including a Web UI to query logs.
 
 [![Build Status](https://travis-ci.org/rails-engine/audit-log.svg?branch=master)](https://travis-ci.org/rails-engine/audit-log)
+
+> We used audit-log in our production environment more than 1 year, until now (2020.5.21), it's inserted about **20 million** log in our system.
 
 ## Demo UI
 
