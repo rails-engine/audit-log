@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CreateAuditLogs < ActiveRecord::Migration[5.0]
+class CreateAuditLogs < ActiveRecord::Migration[5.2]
   def change
     create_table 'audit_logs', force: :cascade do |t|
       t.string 'action', null: false

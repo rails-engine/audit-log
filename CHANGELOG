@@ -1,6 +1,8 @@
-1.0.1
+1.1.0
 -----
 
+- Requirement Rails >= 5.2.
+- Fix audit_logs primary key for use `bigint` column type.
 - Fix migration for use `bigint` column type.
 
 1.0.0
