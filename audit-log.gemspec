@@ -18,6 +18,4 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'kaminari', '>= 0.15'
   spec.add_dependency 'rails', '>= 5.2'
-
-  spec.add_development_dependency 'mysql2'
 end
