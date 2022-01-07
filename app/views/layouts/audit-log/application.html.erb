@@ -2,17 +2,17 @@
 <html>
 <head>
   <title>Audit Log</title>
-  <%= stylesheet_link_tag "audit-log/application", media: "all" %>
-  <%= csrf_meta_tags %>
+  <%%= stylesheet_link_tag "audit-log/application", media: "all" %>
+  <%%= csrf_meta_tags %>
 </head>
 <body>
 
 <div class="container">
-  <% if notice %>
+  <%% if notice %>
   <div id="notice"><%= notice %></div>
-  <% end %>
+  <%% end %>
 
-  <%= yield %>
+  <%%= yield %>
 </div>
 
 <div class="footer">
