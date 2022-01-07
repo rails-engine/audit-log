@@ -1,4 +1,4 @@
-# AuditLog
+# AuditLog (forked from [https://github.com/rails-engine/audit-log](https://github.com/rails-engine/audit-log))
 
 Trail audit logs (Operation logs) into the database for user behaviors, including a Web UI to query logs.
 
@@ -24,7 +24,7 @@ Detail page:
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "audit-log"
+gem "audit-log", git: 'https://github.com/justincadburywong/audit-log'
 ```
 
 And then execute:
@@ -36,6 +36,12 @@ Generate files:
 
 ```bash
 $ rails g audit_log:install
+```
+
+Migrate database:
+
+```bash
+$ rails db:migrate
 ```
 
 ## Usage

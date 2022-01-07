@@ -5,7 +5,7 @@ require 'audit-log/version'
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |spec|
-  spec.name        = 'informed-audit-log'
+  spec.name        = 'audit-log'
   spec.version     = AuditLog::VERSION
   spec.authors     = ['Jason Lee']
   spec.email       = ['huacnlee@gmail.com']
