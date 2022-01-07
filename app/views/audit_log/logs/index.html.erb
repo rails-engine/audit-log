@@ -1,11 +1,11 @@
 <div class="toolbar">
-  <form class="form-inline" action="<%%= audit_log.logs_path %> " method="GET">
+  <form class="form-inline" action="<%= audit_log.logs_path %> " method="GET">
     <div class="form-group">
-      <%%= select_tag(:action_type, options_for_select(AuditLog.action_options, params[:action_type]), include_blank: "All actions", class: "form-control") %>
+      <%= select_tag(:action_type, options_for_select(AuditLog.action_options, params[:action_type]), include_blank: "All actions", class: "form-control") %>
     </div>
 
     <div class="form-group">
-      <input name="q" type="text" class="form-control" placeholder="Search action" value="<%%= params[:q] %>" />
+      <input name="q" type="text" class="form-control" placeholder="Search action" value="<%= params[:q] %>" />
     </div>
 
     <div class="form-group">
@@ -13,10 +13,10 @@
     </div>
   </form>
 </div>
-<%% if @logs.blank? %>
+<% if @logs.blank? %>
   <div class="no-record">No audit logs.</div>
-<%% else %>
-  <%%= paginate @logs %>
+<% else %>
+  <%= paginate @logs %>
 
   <table class="table table-borded">
     <thead>
@@ -30,19 +30,19 @@
     </thead>
 
     <tbody>
-      <%% @logs.each do |log| %>
+      <% @logs.each do |log| %>
         <tr>
-          <td><%%= log.id %></td>
-          <td><%%= log.user_name %></td>
-          <td><%%= log.action_name %></td>
-          <td class="date"><%%= log.created_at.to_s %></td>
+          <td><%= log.id %></td>
+          <td><%= log.user_name %></td>
+          <td><%= log.action_name %></td>
+          <td class="date"><%= log.created_at.to_s %></td>
           <td>
-            <%%= link_to "View", audit_log.log_path(log.id) %>
+            <%= link_to "View", audit_log.log_path(log.id) %>
           </td>
         </tr>
-      <%% end %>
+      <% end %>
     </tbody>
   </table>
 
-  <%%= paginate @logs %>
-<%% end %>
+  <%= paginate @logs %>
+<% end %>
