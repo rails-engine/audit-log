@@ -10,6 +10,11 @@ module AuditLog
       def add_initializer
         template 'config/initializers/audit-log.rb', 'config/initializers/audit-log.rb'
         template 'config/locales/audit-log.yml', 'config/locales/audit-log.yml'
+        template 'app/assets/stylesheets/audit-log/application.css', 'app/assets/stylesheets/audit-log/application.css'
+        template 'app/controllers/audit_log/logs_controller.rb', 'app/controllers/audit_log/logs_controller.rb'
+        template 'app/views/audit_log/logs/index.html.erb', 'app/views/audit_log/logs/index.html.erb'
+        template 'app/views/audit_log/logs/show.html.erb', 'app/views/audit_log/logs/show.html.erb'
+        template 'app/views/layouts/audit-log/application.html.erb', 'app/views/layouts/audit-log/application.html.erb'
       end
 
       def add_migrations

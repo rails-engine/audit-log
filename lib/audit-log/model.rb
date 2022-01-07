@@ -22,7 +22,8 @@ module AuditLog
     end
 
     def user_name
-      return 'none' if self.user.blank?
+      return self.other_method if self.user.blank?
+      return 'none' if self.other_method.blank?
 
       self.user.send(AuditLog.config.user_name_method)
     end

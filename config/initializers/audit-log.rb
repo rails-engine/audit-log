@@ -5,4 +5,6 @@ AuditLog.configure do
   # self.user_class = "User"
   # current_user method name in your Controller, default: 'current_user'
   # self.current_user_method = "current_user"
+  # use another identifier method
+  # self.other_method = request.cookies[:rct]
 end
