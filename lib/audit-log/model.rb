@@ -21,10 +21,12 @@ module AuditLog
       self.request = {} if request.nil?
     end
 
+    def other_method
+      return 'none' if self.user.blank?
+    end
+
     def user_name
       return self.other_method if self.user.blank?
-      return 'none' if self.other_method.blank?
-
       self.user.send(AuditLog.config.user_name_method)
     end
 
