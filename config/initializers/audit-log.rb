@@ -5,6 +5,4 @@ AuditLog.configure do
   # self.user_class = "User"
   # current_user method name in your Controller, default: 'current_user'
   self.current_user_method = "current_user"
-
-  logger.warn("current_user_method ran successfully with id #{self.current_user_method}")
 end
