@@ -21,14 +21,8 @@ module AuditLog
       self.request = {} if request.nil?
     end
 
-    def backup_user_name
-      # return 'none' if self.user.blank?
-      return 'none' if "set_visitor" == nil
-      self.user.send(AuditLog.config.other_method)
-    end
-
     def user_name
-      self.backup_user_name if "current_user" == nil
+      return 'none' if self.user.blank?
       self.user.send(AuditLog.config.user_name_method)
     end
 

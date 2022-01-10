@@ -15,8 +15,7 @@ module AuditLog
       @config = Configuration.new
       @config.user_class = 'User'
       @config.current_user_method = 'current_user'
-      @config.user_name_method = 'name'
-      @config.other_method = 'other'
+      @config.user_name_method = 'email'
       @config
     end
 

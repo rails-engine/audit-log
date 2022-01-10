@@ -11,7 +11,5 @@ module AuditLog
     # user name method, default: "name"
     attr_accessor :user_name_method
 
-    # use a different identifier
-    attr_accessor :other_method
   end
 end
