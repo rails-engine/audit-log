@@ -1,5 +1,7 @@
 # AuditLog
 
+[![build](https://github.com/rails-engine/audit-log/actions/workflows/build.yml/badge.svg)](https://github.com/rails-engine/audit-log/actions/workflows/build.yml)
+
 Trail audit logs (Operation logs) into the database for user behaviors, including a Web UI to query logs.
 
 > We used audit-log in our production environment more than 1 year, until now (2020.5.21), it's inserted about **20 million** log in our system.
