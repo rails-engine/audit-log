@@ -136,6 +136,21 @@ Warden::Manager.before_failure do |env, opts|
 end
 ```
 
+## Configuration
+
+You can write a `config/initializers/audit_log.rb` to configure the behavior of audit log.
+
+```rb
+AuditLog.configure do
+  # class name of you User model, default: 'User'
+  self.user_class = "User"
+  # current_user method name in your Controller, default: 'current_user'
+  self.current_user_method = "current_user"
+  # Speical a table_name for AuditLog model, default: "audit_logs"
+  self.table_name = "audit_logs"
+end
+```
+
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
