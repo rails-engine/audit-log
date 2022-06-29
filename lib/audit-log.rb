@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require_relative './audit-log/version'
-require_relative './audit-log/configuration'
-require_relative './audit-log/model'
-require_relative './audit-log/log_subscriber'
-require_relative './audit-log/engine'
-require 'kaminari'
+require_relative "./audit-log/version"
+require_relative "./audit-log/configuration"
+require_relative "./audit-log/model"
+require_relative "./audit-log/log_subscriber"
+require_relative "./audit-log/engine"
+require "kaminari"
 
 module AuditLog
   class << self
@@ -13,9 +13,10 @@ module AuditLog
       return @config if defined?(@config)
 
       @config = Configuration.new
-      @config.user_class = 'User'
-      @config.current_user_method = 'current_user'
-      @config.user_name_method = 'name'
+      @config.user_class = "User"
+      @config.current_user_method = "current_user"
+      @config.user_name_method = "name"
+      @config.table_name = "audit_logs"
       @config
     end
 
@@ -27,7 +28,7 @@ module AuditLog
     #
     # AuditLog.audit!(:edit_account, @account, payload: account_params, user: current_user)
     def audit!(action, record = nil, payload: nil, user: nil, request: nil)
-      ActiveSupport::Notifications.instrument('audit.audit_log', action: action) do
+      ActiveSupport::Notifications.instrument("audit.audit_log", action: action) do
         request_info = {}
         if request
           request_info = {
@@ -55,7 +56,7 @@ module AuditLog
 
     # Get I18n action name options for select
     def action_options
-      I18n.t('audit_log.action').map { |k, v| [v, k.to_s] }
+      I18n.t("audit_log.action").map { |k, v| [v, k.to_s] }
     end
   end
 end

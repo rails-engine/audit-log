@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative './controller_helper'
+require_relative "./controller_helper"
 
 module AuditLog
   class Engine < Rails::Engine
@@ -12,7 +12,7 @@ module AuditLog
 
     AuditLog::LogSubscriber.attach_to :audit_log
 
-    initializer 'audit-log.assets.precompile', group: :all do |app|
+    initializer "audit-log.assets.precompile", group: :all do |app|
       app.config.assets.precompile += %w[audit-log/application.css]
     end
   end

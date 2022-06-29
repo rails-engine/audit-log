@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 module AuditLog
   module Model
     extend ActiveSupport::Concern
 
     included do
-      self.table_name = 'audit_logs'
+      self.table_name = AuditLog.config.table_name
 
       serialize :payload, JSON
       serialize :request, JSON
@@ -22,13 +24,13 @@ module AuditLog
     end
 
     def user_name
-      return 'none' if self.user.blank?
+      return "none" if user.blank?
 
-      self.user.send(AuditLog.config.user_name_method)
+      user.send(AuditLog.config.user_name_method)
     end
 
     def action_name
-      I18n.t("audit_log.action.#{self.action}", default: self.action)
+      I18n.t("audit_log.action.#{action}", default: action)
     end
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_comment, only: %i[show edit update destroy]
@@ -31,7 +33,7 @@ class CommentsController < ApplicationController
 
     if @comment.save
       audit! :create_comment, @comment, payload: comment_params
-      redirect_to @comment, notice: 'Comment was successfully created.'
+      redirect_to @comment, notice: "Comment was successfully created."
     else
       render :new
     end
@@ -41,7 +43,7 @@ class CommentsController < ApplicationController
   def update
     if @comment.update(comment_params)
       audit! :update_comment, @comment, payload: comment_params
-      redirect_to @comment, notice: 'Comment was successfully updated.'
+      redirect_to @comment, notice: "Comment was successfully updated."
     else
       render :edit
     end
@@ -51,7 +53,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment.destroy
     audit! :delete_comment, @comment, payload: @comment.attributes
-    redirect_to comments_url, notice: 'Comment was successfully destroyed.'
+    redirect_to comments_url, notice: "Comment was successfully destroyed."
   end
 
   private

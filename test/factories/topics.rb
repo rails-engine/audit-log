@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :topic, class: Topic do
     association :user, factory: :user

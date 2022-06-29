@@ -1,15 +1,13 @@
-gem 'sass-rails'
-gem 'uglifier'
-gem 'coffee-rails'
-gem 'devise'
-gem 'jquery-rails'
-gem 'mysql2'
-gem 'puma'
-gem 'bootstrap'
+gem "sass-rails"
+gem "uglifier"
+gem "coffee-rails"
+gem "devise"
+gem "jquery-rails"
+gem "pg"
+gem "puma"
+gem "bootstrap"
 
 group :development, :test do
-  gem 'minitest'
-  gem 'factory_bot'
-  gem 'simplecov'
-  gem 'codecov'
+  gem "minitest"
+  gem "factory_bot"
 end

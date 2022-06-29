@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -5,18 +7,18 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable
 
   def name
-    self.email.split('@').first
+    email.split("@").first
   end
 
   def profile_url
-    "/users/#{self.id}"
+    "/users/#{id}"
   end
 
   def avatar_url
-    "//www.gravatar.com/avatar/#{Digest::MD5.hexdigest(self.email)}"
+    "//www.gravatar.com/avatar/#{Digest::MD5.hexdigest(email)}"
   end
 
   def admin?
-    self.email == 'huacnlee@gmail.com'
+    email == "huacnlee@gmail.com"
   end
 end

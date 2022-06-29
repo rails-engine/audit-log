@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TopicsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_topic, only: %i[show edit update destroy]
@@ -26,7 +28,7 @@ class TopicsController < ApplicationController
     @topic.user = current_user
 
     if @topic.save
-      redirect_to @topic, notice: 'Topic was successfully created.'
+      redirect_to @topic, notice: "Topic was successfully created."
     else
       render :new
     end
@@ -35,7 +37,7 @@ class TopicsController < ApplicationController
   # PATCH/PUT /topics/1
   def update
     if @topic.update(topic_params)
-      redirect_to @topic, notice: 'Topic was successfully updated.'
+      redirect_to @topic, notice: "Topic was successfully updated."
     else
       render :edit
     end
@@ -44,7 +46,7 @@ class TopicsController < ApplicationController
   # DELETE /topics/1
   def destroy
     @topic.destroy
-    redirect_to topics_url, notice: 'Topic was successfully destroyed.'
+    redirect_to topics_url, notice: "Topic was successfully destroyed."
   end
 
   private
