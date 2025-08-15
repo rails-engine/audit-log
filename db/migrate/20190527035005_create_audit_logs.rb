@@ -4,8 +4,8 @@ class CreateAuditLogs < ActiveRecord::Migration[5.2]
   def change
     create_table "audit_logs", force: :cascade do |t|
       t.string "action", null: false
-      t.bigint "user_id"
-      t.bigint "record_id"
+      t.string "user_id"
+      t.string "record_id"
       t.string "record_type"
       t.text "payload"
       t.text "request"
